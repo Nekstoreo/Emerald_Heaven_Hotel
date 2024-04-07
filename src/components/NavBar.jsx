@@ -4,13 +4,12 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <div>
-      {/* Navigation Bar */}
       <header
         className="header"
         id="header"
         style={{ fontFamily: "Inter", background: "rgb(255, 255, 255)" }}
       >
-        <nav className="nav container">
+        <nav className="nav container" style={{ width: "100%" }}>
           <b>
             <Link
               to="/"
@@ -26,7 +25,7 @@ function NavBar() {
               {" "}
               Emerald Haven{" "}
             </Link>
-          </b>{" "}
+          </b>
           {/* Closing tag for <b> element */}
           <div className="nav__menu" id="nav-menu">
             <ul className="nav__list">
@@ -64,15 +63,16 @@ function NavBar() {
               </li>
             </ul>
           </div>
-          <div className="nav__toggle" id="nav-toggle">
-            <i className="bx bx-grid-alt"></i>
+          {/* Closing tag for <div> element */}
+          <div className="nav__btns">
+            <Link
+              to="/login"
+              className="button button--flex button--link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
+            >
+              Log in
+              <i className="bx bx-log-in button__icon"></i>
+            </Link>
           </div>
-          <Link
-            to="/login"
-            className="button button__header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Sign in
-          </Link>
         </nav>
       </header>
     </div>

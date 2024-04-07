@@ -1,7 +1,19 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-
-function Index() {
+import { Link } from "react-router-dom";
+import UserReview from "../components/UserReview";
+import Carousel from "../components/Carousel";
+function Home() {
+  const images = [
+    '/assets/img/hotels/h1.jpg',
+    '/assets/img/hotels/h2.jpg',
+    '/assets/img/hotels/h3.jpg',
+    '/assets/img/hotels/h4.jpg',
+    '/assets/img/hotels/h5.jpg',
+    '/assets/img/hotels/h6.jpg',
+    '/assets/img/hotels/h7.jpg',
+    '/assets/img/hotels/h8.jpg',
+    // ... más imágenes
+  ];
   return (
     <div>
       {/* Banner Section */}
@@ -26,19 +38,19 @@ function Index() {
           <div className="input-box">
             <br />
 
-                        <span className="inline-flex rounded-md shadow-sm">
-                          <Link
-                            to="/book"
-                            style={{
-                              padding: "12px 15px 12px 15px",
-                              fontSize: "17px",
-                              fontFamily: "Inter",
-                            }}
-                            className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                          >
-                            Book now
-                          </Link>
-                        </span>
+            <span className="inline-flex rounded-md shadow-sm">
+              <Link
+                to="/book"
+                style={{
+                  padding: "12px 15px 12px 15px",
+                  fontSize: "17px",
+                  fontFamily: "Inter",
+                }}
+                className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                Book now
+              </Link>
+            </span>
             <br />
           </div>
         </div>
@@ -50,8 +62,8 @@ function Index() {
         style={{ fontFamily: "Inter", marginTop: "12%" }}
       >
         <div
-          className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
-          style={{ margin: "auto", width: "70%" }}
+          className="container mx-auto flex md:flex-row flex-col items-center"
+          style={{ margin: "auto", width: "70%", paddingTop: "13rem" }}
         >
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <img
@@ -93,16 +105,7 @@ function Index() {
         </h1>
       </section>
       <div className="wrapper">
-        <div className="carousel owl-carousel">
-          <div className="card card-1"></div>
-          <div className="card card-2"></div>
-          <div className="card card-3"></div>
-          <div className="card card-4"></div>
-          <div className="card card-5"></div>
-          <div className="card card-6"></div>
-          <div className="card card-7"></div>
-          <div className="card card-8"></div>
-        </div>
+        <Carousel images={images} />
       </div>
 
       {/* Vision Section */}
@@ -133,88 +136,39 @@ function Index() {
         Testimonials
       </h1>
       <div className="wrapper-rev">
-        <div className="box">
-          <i className="bx bxs-quote-left quote"></i>
-          <p>
-            Beyond 5 stars! Stayed last week at this wonderful hotel. Everything
-            exceeds ones wildest dream of a hotel. On top they have the most
-            wonderful staff, extremely kind and helpful with every wish.
-          </p>
-          <div className="content">
-            <div className="info">
-              <div className="name">Oshane Smith</div>
-              <div className="stars">
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-              </div>
-            </div>
-            <div className="image">
-              <img
-                src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="box">
-          <i className="bx bxs-quote-left quote"></i>
-          <p>
-            This is indeed a place you do not want to leave, and when you do it
-            is with one hope to come back. Everything was great, staff was very
-            helpful and we were extremely happy with the meeting!
-          </p>
-          <div className="content">
-            <div className="info">
-              <div className="name">Rajesh Singh</div>
-              <div className="stars">
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bx-star"></i>
-              </div>
-            </div>
-            <div className="image">
-              <img
-                src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="box">
-          <i className="bx bxs-quote-left quote"></i>
-          <p>
-            The service here has just been fantastic; whatever we needed was
-            brought to us right away. The food was so delicious; the entire
-            experience was really great. A must stay hotel for everyone.
-          </p>
-          <div className="content">
-            <div className="info">
-              <div className="name">Khushi Mittal</div>
-              <div className="stars">
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star"></i>
-                <i className="bx bxs-star-half"></i>
-              </div>
-            </div>
-            <div className="image">
-              <img
-                src="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
+        <UserReview
+          quote="Beyond 5 stars! Stayed last week at this wonderful hotel. Everything exceeds ones wildest dream of a hotel. On top they have the most wonderful staff, extremely kind and helpful with every wish."
+          name="Oshane Smith"
+          stars={["bxs-star", "bxs-star", "bxs-star", "bxs-star", "bxs-star"]}
+          image="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
+        />
+
+        <UserReview
+          quote="This is indeed a place you do not want to leave, and when you do it is with one hope to come back. Everything was great, staff was very helpful and we were extremely happy with the meeting!"
+          name="Rajesh Singh"
+          stars={["bxs-star", "bxs-star", "bxs-star", "bxs-star", "bx-star"]}
+          image="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
+        />
+
+        <UserReview
+          quote="The service here has just been fantastic; whatever we needed was brought to us right away. The food was so delicious; the entire experience was really great. A must stay hotel for everyone."
+          name="Khushi Mittal"
+          stars={[
+            "bxs-star",
+            "bxs-star",
+            "bxs-star",
+            "bxs-star",
+            "bxs-star-half",
+          ]}
+          image="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
+        />
       </div>
 
       {/* Contact Section */}
-      <section className="text-gray-100 px-8 py-12" style={{ fontFamily: "Inter" }}>
+      <section
+        className="text-gray-100 px-8 py-12"
+        style={{ fontFamily: "Inter" }}
+      >
         <div className="text-center w-full"></div>
         <div className="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg">
           <div className="flex flex-col justify-between">
@@ -265,4 +219,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Home;
