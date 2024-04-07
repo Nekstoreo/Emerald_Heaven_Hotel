@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserReview from "../components/UserReview";
-import Carousel from "../components/Carousel";
+import ImageSlider from "../components/ImageSlider";
+
 function Home() {
   const images = [
-    '/assets/img/hotels/h1.jpg',
-    '/assets/img/hotels/h2.jpg',
-    '/assets/img/hotels/h3.jpg',
-    '/assets/img/hotels/h4.jpg',
-    '/assets/img/hotels/h5.jpg',
-    '/assets/img/hotels/h6.jpg',
-    '/assets/img/hotels/h7.jpg',
-    '/assets/img/hotels/h8.jpg',
-    // ... más imágenes
+    "/assets/img/hotels/h1.jpg",
+    "/assets/img/hotels/h2.jpg",
+    "/assets/img/hotels/h3.jpg",
+    "/assets/img/hotels/h4.jpg",
+    "/assets/img/hotels/h5.jpg",
+    "/assets/img/hotels/h6.jpg",
+    "/assets/img/hotels/h7.jpg",
+    "/assets/img/hotels/h8.jpg",
   ];
   return (
     <div>
@@ -104,9 +104,8 @@ function Home() {
           Our Hotels
         </h1>
       </section>
-      <div className="wrapper">
-        <Carousel images={images} />
-      </div>
+
+      <ImageSlider slides={images} />
 
       {/* Vision Section */}
       <div className="vision">

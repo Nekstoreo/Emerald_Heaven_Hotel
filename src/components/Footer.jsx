@@ -29,13 +29,7 @@ function Footer() {
                 <h3>Know More</h3>
                 <ul>
                   <li>
-                    <a href="pages/membership.html">Membership</a>
-                  </li>
-                  <li>
-                    <a href="pages/team.html">Our Team</a>
-                  </li>
-                  <li>
-                    <a href="pages/news.html">News</a>
+                    <a href="/team">Our Team</a>
                   </li>
                 </ul>
               </div>

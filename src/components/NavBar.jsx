@@ -10,22 +10,26 @@ function NavBar() {
         style={{ fontFamily: "Inter", background: "rgb(255, 255, 255)" }}
       >
         <nav className="nav container" style={{ width: "100%" }}>
-          <b>
-            <Link
-              to="/"
-              className="nav__logo"
-              style={{
-                fontFamily: "Product Sans Bold",
-                letterSpacing: "-.5px",
-                fontSize: "1.5rem",
-                textDecoration: "none", // Optionally remove underline
-                color: "inherit", // Optionally inherit color from parent
-              }}
-            >
-              {" "}
-              Emerald Haven{" "}
-            </Link>
-          </b>
+        <div style={{ display: "flex", alignItems: "center" }}>
+      <img src="favicon-32x32.png" alt="Emerald Haven" />
+      <b>
+        <Link
+          to="/"
+          className="nav__logo"
+          style={{
+            fontFamily: "Product Sans Bold",
+            letterSpacing: "-.5px",
+            fontSize: "1.5rem",
+            textDecoration: "none",
+            color: "inherit",
+            marginLeft: "5px", // Espacio entre el favicon y la etiqueta
+          }}
+        >
+          {" "}
+          Emerald Haven{" "}
+        </Link>
+      </b>
+    </div>
           {/* Closing tag for <b> element */}
           <div className="nav__menu" id="nav-menu">
             <ul className="nav__list">
