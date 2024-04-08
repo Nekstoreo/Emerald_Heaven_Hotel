@@ -38,7 +38,7 @@ function Home() {
           <div className="input-box">
             <br />
 
-            <span className="inline-flex rounded-md shadow-sm">
+            <span className="">
               <Link
                 to="/book"
                 style={{

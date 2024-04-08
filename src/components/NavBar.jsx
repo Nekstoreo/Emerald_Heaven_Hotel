@@ -2,18 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function NavBar(props) {
-  const { loggedIn, email } = props
-  const navigate = useNavigate()
+const NavBar = (props) => {
+  const { loggedIn, email } = props;
+  const navigate = useNavigate();
 
   const onButtonClick = () => {
     if (loggedIn) {
-      localStorage.removeItem('user')
-      props.setLoggedIn(false)
+      localStorage.removeItem("user");
+      props.setLoggedIn(false);
     } else {
-      navigate('/login')
+      navigate("/login");
     }
-  }
+  };
   return (
     <div>
       <header
@@ -22,26 +22,26 @@ function NavBar(props) {
         style={{ fontFamily: "Inter", background: "rgb(255, 255, 255)" }}
       >
         <nav className="nav container" style={{ width: "100%" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-      <img src="favicon-32x32.png" alt="Emerald Haven" />
-      <b>
-        <Link
-          to="/"
-          className="nav__logo"
-          style={{
-            fontFamily: "Product Sans Bold",
-            letterSpacing: "-.5px",
-            fontSize: "1.5rem",
-            textDecoration: "none",
-            color: "inherit",
-            marginLeft: "5px", // Espacio entre el favicon y la etiqueta
-          }}
-        >
-          {" "}
-          Emerald Haven{" "}
-        </Link>
-      </b>
-    </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img src="favicon-32x32.png" alt="Emerald Haven" />
+            <b>
+              <Link
+                to="/"
+                className="nav__logo"
+                style={{
+                  fontFamily: "Product Sans Bold",
+                  letterSpacing: "-.5px",
+                  fontSize: "1.5rem",
+                  textDecoration: "none",
+                  color: "inherit",
+                  marginLeft: "5px", // Espacio entre el favicon y la etiqueta
+                }}
+              >
+                {" "}
+                Emerald Haven{" "}
+              </Link>
+            </b>
+          </div>
           {/* Closing tag for <b> element */}
           <div className="nav__menu" id="nav-menu">
             <ul className="nav__list">
@@ -80,19 +80,19 @@ function NavBar(props) {
             </ul>
           </div>
           {/* Closing tag for <div> element */}
-          <div className={'buttonContainer'}>
-        <input
-          className={'inputButton'}
-          type="button"
-          onClick={onButtonClick}
-          value={loggedIn ? 'Log out' : 'Log in'}
-        />
-        {loggedIn ? <div>Your email address is {email}</div> : <div />}
-      </div>
+          {loggedIn ? <div>Your email address is {email}</div> : <div />}
+          <div className={"buttonContainer"}>
+            <input
+              className={"inputButton"}
+              type="button"
+              onClick={onButtonClick}
+              value={loggedIn ? "Log out" : "Log in"}
+            />
+          </div>
         </nav>
       </header>
     </div>
   );
-}
+};
 
 export default NavBar;
