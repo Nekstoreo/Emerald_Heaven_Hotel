@@ -1,7 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar(props) {
+  const { loggedIn, email } = props
+  const navigate = useNavigate()
+
+  const onButtonClick = () => {
+    if (loggedIn) {
+      localStorage.removeItem('user')
+      props.setLoggedIn(false)
+    } else {
+      navigate('/login')
+    }
+  }
   return (
     <div>
       <header
@@ -68,15 +80,15 @@ function NavBar() {
             </ul>
           </div>
           {/* Closing tag for <div> element */}
-          <div className="nav__btns">
-            <Link
-              to="/login"
-              className="button button--flex button--link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
-            >
-              Log in
-              <i className="bx bx-log-in button__icon"></i>
-            </Link>
-          </div>
+          <div className={'buttonContainer'}>
+        <input
+          className={'inputButton'}
+          type="button"
+          onClick={onButtonClick}
+          value={loggedIn ? 'Log out' : 'Log in'}
+        />
+        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+      </div>
         </nav>
       </header>
     </div>
