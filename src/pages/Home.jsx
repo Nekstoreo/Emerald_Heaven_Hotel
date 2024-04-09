@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import UserReview from "../components/UserReview";
 import ImageSlider from "../components/ImageSlider";
 import React, { useState } from "react";

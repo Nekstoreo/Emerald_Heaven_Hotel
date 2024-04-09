@@ -8,7 +8,6 @@ import BookingSuccessfull from "./components/BookingSuccessfull";
 import RoomBookingPage from "./pages/RoomBookingPage";
 import Bookings from "./pages/Bookings";
 import Error from "./pages/Error";
-import Book from "./pages/Book";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Hotels from "./pages/Hotels";
@@ -51,7 +50,6 @@ function App() {
         <NavBar email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/book" element={<Book />} />
           <Route
             path="/login"
             element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}

@@ -15,10 +15,17 @@ app.post("/roombooking", function (req, res) {
   const userEmail = formData.Email;
 
   try {
-    const user = db.get("users").find({ email: userEmail }).value();
+    let user = db.get("users").find({ email: userEmail }).value();
+    
+    // Si el usuario no existe, lo creamos
     if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
+      user = {
+        email: userEmail,
+        reserves: []
+      };
+      db.get("users").push(user).write();
     }
+
     // Agregar la reserva a la lista de reservas del usuario
     user.reserves.push(formData);
     db.write();
@@ -28,6 +35,7 @@ app.post("/roombooking", function (req, res) {
     res.status(500).json({ success: false, message: "Failed to save reservation" });
   }
 });
+
 
 app.get("/roombooking", function (req, res) {
   const userEmail = req.query.email;

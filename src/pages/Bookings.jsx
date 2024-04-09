@@ -40,7 +40,7 @@ function Bookings({ email }) {
         <ul className={styles["bookingsList"]}>
           {bookings.map((booking, index) => (
             <li key={index} className={styles["bookingItem"]}>
-              <p>Name: {booking.name}</p>
+              <p>Name: {booking.Name}</p>
               <p>Check In Date: {booking.checkInDate}</p>
               <p>Check Out Date: {booking.checkOutDate}</p>
               <p>Number of People: {booking.noOfPeople}</p>

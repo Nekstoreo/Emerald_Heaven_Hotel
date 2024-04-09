@@ -4,7 +4,8 @@
   "description": "",
   "main": "appContacs.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon appContacs.js",
+    "start": "node appContacs.js"
   },
   "keywords": [],
   "author": "",

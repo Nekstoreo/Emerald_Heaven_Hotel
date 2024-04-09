@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
+function NavBar(props) {
   const { loggedIn, email } = props;
   const navigate = useNavigate();
 
@@ -14,15 +14,16 @@ const NavBar = (props) => {
       navigate("/login");
     }
   };
+
   return (
     <div>
       <header
         className="header"
         id="header"
-        style={{ fontFamily: "Inter", background: "rgb(255, 255, 255)" }}
+        style={{ fontFamily: "Inter", background: "rgb(255, 255, 255)", height: "auto"}}
       >
-        <nav className="nav container" style={{ width: "100%" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+        <nav className="nav container">
+          <div style={{ display: "inline-flex", adjustContent: "center" }}>
             <img src="favicon-32x32.png" alt="Emerald Haven" />
             <b>
               <Link
@@ -43,49 +44,32 @@ const NavBar = (props) => {
             </b>
           </div>
           {/* Closing tag for <b> element */}
-          <div className="nav__menu" id="nav-menu">
+          <div className="nav__menu ">
             <ul className="nav__list">
               <li className="nav__item">
-                <Link
-                  to="/"
-                  className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
-                >
+                <Link to="/" className="">
                   Home
                 </Link>
               </li>
               <li className="nav__item">
-                <Link
-                  to="/#about"
-                  className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
-                >
-                  About
-                </Link>
-              </li>
-              <li className="nav__item">
-                <Link
-                  to="/hotels"
-                  className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
-                >
+                <Link to="/hotels" className="nav__link">
                   Hotels
                 </Link>
               </li>
               <li className="nav__item">
-                <Link
-                  to="/roombooking"
-                  s
-                  className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
-                >
+                <Link to={loggedIn ? "/roombooking" : "/login"} className="nav__link">
                   Book now
                 </Link>
               </li>
-              <li className="nav__item">
-                <Link
-                  to="/bookings"
-                  className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
-                >
-                  My Bookings
-                </Link>
-              </li>
+              {loggedIn ? (
+                <li className="nav__item">
+                  <Link to="/bookings" className="nav__link">
+                    My Bookings
+                  </Link>
+                </li>
+              ) : (
+                <div />
+              )}
             </ul>
           </div>
           {/* Closing tag for <div> element */}
@@ -95,13 +79,13 @@ const NavBar = (props) => {
               className={"inputButton"}
               type="button"
               onClick={onButtonClick}
-              value={loggedIn ? "Log out" : "Log in"}
+              value={loggedIn ? "Log out" : "Sign In / Log in"}
             />
           </div>
         </nav>
       </header>
     </div>
   );
-};
+}
 
 export default NavBar;
