@@ -3,13 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import ScrollUpButton from "./components/ScrollUpButton";
+import BookingCancelled from "./components/BookingCancelled";
+import BookingSuccessfull from "./components/BookingSuccessfull";
+import RoomBookingPage from "./pages/RoomBookingPage";
+import Bookings from "./pages/Bookings";
+import Error from "./pages/Error";
 import Book from "./pages/Book";
-import Dining from "./pages/Dining";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Hotels from "./pages/Hotels";
 import Team from "./pages/Team";
 import MapView from "./components/Map";
+import AdminLogin from "./pages/AdminLogin";
 import "./App.css";
 
 function App() {
@@ -18,37 +23,35 @@ function App() {
 
   useEffect(() => {
     // Fetch the user email and token from local storage
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem("user"));
 
     // If the token/email does not exist, mark the user as logged out
     if (!user || !user.token) {
-      setLoggedIn(false)
-      return
+      setLoggedIn(false);
+      return;
     }
 
     // If the token exists, verify it with the auth server to see if it is valid
-    fetch('http://localhost:3080/verify', {
-      method: 'POST',
+    fetch("http://localhost:3080/verify", {
+      method: "POST",
       headers: {
-        'jwt-token': user.token,
+        "jwt-token": user.token,
       },
     })
       .then((r) => r.json())
       .then((r) => {
-        setLoggedIn('success' === r.message)
-        setEmail(user.email || '')
-      })
-  }, [])
-
+        setLoggedIn("success" === r.message);
+        setEmail(user.email || "");
+      });
+  }, []);
 
   return (
     <div className="App">
       <Router>
-        <NavBar email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        <NavBar email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/book" element={<Book />} />
-          <Route path="/dining" element={<Dining />} />
           <Route
             path="/login"
             element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
@@ -56,6 +59,12 @@ function App() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/team" element={<Team />} />
           <Route path="/map" element={<MapView />} />
+          <Route path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/roombooking" element={<RoomBookingPage email={email} />} />
+          <Route path="/bookings" element={<Bookings email={email} />} />
+          <Route path="/bookingcancelled" element={<BookingCancelled />} />
+          <Route path="/bookingsuccessfull" element={<BookingSuccessfull />} />
+          <Route path="/errorbooking" element={<Error />} />
         </Routes>
         <ScrollUpButton />
         <Footer />

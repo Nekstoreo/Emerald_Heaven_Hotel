@@ -1,9 +1,58 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import UserReview from "../components/UserReview";
 import ImageSlider from "../components/ImageSlider";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleFullNameChange = (event) => {
+    setFullName(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const onButtonClick = () => {
+    console.log("prueba");
+    const formData = { fullName, email, message };
+    try {
+      fetch('http://localhost:3020/contactame', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert(data.message);
+        navigate('/');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+    finally{
+
+    }
+  }
+
   const images = [
     "/assets/img/hotels/h1.jpg",
     "/assets/img/hotels/h2.jpg",
@@ -22,38 +71,6 @@ function Home() {
           <div className="title">Emerald Haven</div>
           <div className="top-subtitle subtitle">Best Memories Start Here</div>
         </div>
-        <div className="search-box">
-          <div className="input-box">
-            <p>Location</p>
-            <input type="text" name="" id="" placeholder="Delhi" />
-          </div>
-          <div className="input-box">
-            <p>Check-In Date</p>
-            <input type="date" name="" id="" placeholder="01/01/2021" />
-          </div>
-          <div className="input-box">
-            <p>Guests</p>
-            <input type="number" name="" id="" placeholder="100" />
-          </div>
-          <div className="input-box">
-            <br />
-
-            <span className="">
-              <Link
-                to="/book"
-                style={{
-                  padding: "12px 15px 12px 15px",
-                  fontSize: "17px",
-                  fontFamily: "Inter",
-                }}
-                className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Book now
-              </Link>
-            </span>
-            <br />
-          </div>
-        </div>
       </section>
       {/* About Section */}
       <section
@@ -63,7 +80,7 @@ function Home() {
       >
         <div
           className="container mx-auto flex md:flex-row flex-col items-center"
-          style={{ margin: "auto", width: "70%", paddingTop: "13rem" }}
+          style={{ margin: "auto", width: "70%" }}
         >
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <img
@@ -163,7 +180,7 @@ function Home() {
         />
       </div>
 
-      {/* Contact Section */}
+          {/* Contact Section */}
       <section
         className="text-gray-100 px-8 py-12"
         style={{ fontFamily: "Inter" }}
@@ -180,7 +197,7 @@ function Home() {
               />
             </div>
           </div>
-          <div className="">
+          <div className="mt-8">
             <div>
               <span className="uppercase text-sm text-gray-600 font-bold">
                 Full Name
@@ -188,7 +205,8 @@ function Home() {
               <input
                 className="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="text"
-                placeholder=""
+                value={fullName}
+                onChange={handleFullNameChange}
               />
             </div>
             <div className="mt-8">
@@ -198,22 +216,32 @@ function Home() {
               <input
                 className="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="text"
+                value={email}
+                onChange={handleEmailChange}
               />
             </div>
             <div className="mt-8">
               <span className="uppercase text-sm text-gray-600 font-bold">
                 Message
               </span>
-              <textarea className="w-full h-32 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+              <textarea
+                className="w-full h-32 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                value={message}
+                onChange={handleMessageChange}
+              ></textarea>
             </div>
             <div className="mt-8">
-              <button className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
+              <button
+                className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
+                onClick={onButtonClick}
+              >
                 Send Message
               </button>
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

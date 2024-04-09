@@ -1,0 +1,33 @@
+.bookingsContainer {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.bookingsContainer h2 {
+  text-align: center;
+  color: #333;
+}
+
+.bookingsList {
+  list-style: none;
+  padding: 0;
+}
+
+.bookingItem {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.bookingItem p {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Puedes añadir más estilos aquí según necesites */

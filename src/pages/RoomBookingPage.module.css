@@ -1,0 +1,44 @@
+/* RoomBookingPage.module.css */
+.BookingForm {
+  background-color: #f7f7f7; /* Color de fondo del formulario */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+.BookingForm label {
+  display: block; /* Hace que cada etiqueta ocupe su propia línea */
+  margin-top: 10px; /* Espacio superior para cada etiqueta */
+  color: #333; /* Color del texto para las etiquetas */
+}
+
+.BookingForm input[type="text"],
+.BookingForm input[type="email"],
+.BookingForm input[type="number"],
+.BookingForm input[type="date"],
+.BookingForm select {
+  width: 100%; /* Ancho completo */
+  padding: 8px; /* Espaciado interno */
+  margin-top: 5px; /* Espacio superior */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.BookingForm input[type="submit"] {
+  background-color: #5cb85c; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  padding: 10px 15px; /* Espaciado interno del botón */
+  border: none; /* Sin bordes */
+  border-radius: 4px; /* Bordes redondeados del botón */
+  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
+  margin-top: 10px; /* Espacio superior del botón */
+}
+
+.BookingForm input[type="submit"]:hover {
+  background-color: #4cae4c; /* Color de fondo del botón al pasar el mouse */
+}
+
+.errorLabel {
+  color: #d9534f; /* Color del texto para los mensajes de error */
+  margin-top: 10px; /* Espacio superior para el mensaje de error */
+}

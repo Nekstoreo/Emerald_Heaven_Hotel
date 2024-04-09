@@ -71,16 +71,25 @@ const NavBar = (props) => {
               </li>
               <li className="nav__item">
                 <Link
-                  to="/dining"
+                  to="/roombooking"
+                  s
                   className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
                 >
-                  Dining
+                  Book now
+                </Link>
+              </li>
+              <li className="nav__item">
+                <Link
+                  to="/bookings"
+                  className="nav__link font-medium leading-6 text-black-600 transition duration-150 ease-out hover:text-gray-600"
+                >
+                  My Bookings
                 </Link>
               </li>
             </ul>
           </div>
           {/* Closing tag for <div> element */}
-          {loggedIn ? <div>Your email address is {email}</div> : <div />}
+          {loggedIn ? <div>{email}</div> : <div />}
           <div className={"buttonContainer"}>
             <input
               className={"inputButton"}

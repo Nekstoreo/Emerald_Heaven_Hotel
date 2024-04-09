@@ -1,0 +1,29 @@
+{
+  "contacts": [
+    {
+      "fullName": "Juan Pérez",
+      "email": "juan@example.com",
+      "message": "Hola, me gustaría obtener más información sobre sus servicios."
+    },
+    {
+      "fullName": "María González",
+      "email": "maria@example.com",
+      "message": "Buen día, quisiera hacer una consulta sobre el producto X."
+    },
+    {
+      "fullName": "Pedro Rodríguez",
+      "email": "pedro@example.com",
+      "message": "Estoy interesado en concertar una reunión para discutir un proyecto."
+    },
+    {
+      "fullName": "caminilito",
+      "email": "camilo@camilin",
+      "message": "gracias por los servicios"
+    },
+    {
+      "fullName": "caliche",
+      "email": "caliche@homtail.cpm",
+      "message": "jajajaajaj"
+    }
+  ]
+}

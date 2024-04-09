@@ -1,0 +1,19 @@
+.success {
+  font-family: "Albert Sans";
+  margin: 10px;
+}
+.header {
+  height: 70px;
+  background-color: black;
+  text-align: center;
+}
+.headerText {
+  /* margin-top: 20px; */
+  padding-top: 15px;
+  font-family: "Albert Sans";
+  font-size: 25px;
+  color: white;
+}
+.btn {
+  margin: 10px;
+}
