@@ -14,6 +14,7 @@ import Hotels from "./pages/Hotels";
 import Team from "./pages/Team";
 import MapView from "./components/Map";
 import AdminLogin from "./pages/AdminLogin";
+import CheckAvailability from "./pages/CheckAvailability";
 import "./App.css";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route path="/bookingcancelled" element={<BookingCancelled />} />
           <Route path="/bookingsuccessfull" element={<BookingSuccessfull />} />
           <Route path="/errorbooking" element={<Error />} />
+          <Route path="/check-availability" element={<CheckAvailability />} />
         </Routes>
         <ScrollUpButton />
         <Footer />

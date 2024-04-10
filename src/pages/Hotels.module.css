@@ -11,6 +11,71 @@ footer {
 	box-sizing: border-box
 }
 
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .hotelContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin-bottom: 20px;
+  }
+
+  .hotelImage {
+	margin-right: 16px;
+  }
+  
+  .leftContent {
+	flex: 0 0 auto;
+  }
+  
+  .centerContent {
+	flex-grow: 1;
+	margin: 0 20px;
+  }
+  
+  .rightContent {
+	flex: 0 0 auto;
+  }
+
+.hotelContainer {
+	display: flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 30px;
+	margin-bottom: 30px;
+  }
+  
+  .hotelImage {
+	margin-right: 16px;
+  }
+  
+  .hotelInfo {
+	flex-grow: 1;
+  }
+  
+  .hotelRating {
+	margin-top: 10px;
+  }
+  
+  .viewAvailabilityBtn {
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+  
+  
 h1,
 h2,
 h3,

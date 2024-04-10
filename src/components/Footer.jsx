@@ -12,16 +12,16 @@ function Footer() {
                 <h3>Pages</h3>
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="http://localhost:3000/">Home</a>
                   </li>
                   <li>
-                    <a href="pages/map.html">Hotels</a>
+                    <a href="hotels">Hotels</a>
                   </li>
                   <li>
-                    <a href="pages/login.html">Login</a>
+                    <a href="login">Login</a>
                   </li>
                   <li>
-                    <a href="pages/book.html">Book Hotel</a>
+                    <a href="roombooking">Book Hotel</a>
                   </li>
                 </ul>
               </div>

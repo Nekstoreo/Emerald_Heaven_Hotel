@@ -4,18 +4,32 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 function TeamSlider() {
   const members = [
     {
-      name: "Tom Hardy",
-      twitter: "https://twitter.com/tomhardy",
-      linkedin: "https://www.linkedin.com/in/tomhardy",
+      name: "Nestor Miguel Gutierrez Arias",
+      twitter: "https://twitter.com/",
+      linkedin: "https://www.linkedin.com",
       image:
-        "https://pbs.twimg.com/profile_images/757629484463820800/XCgZ56hW_400x400.jpg",
+        "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_boy_person_avatar_people_white_tone_icon_159357.png",
     },
     {
-      name: "Tom Holland",
+      name: "Emanuel Rios Bolivar",
+      twitter: "https://twitter.com/",
+      linkedin: "https://www.linkedin.com",
+      image:
+        "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png",
+    },
+    {
+      name: "Carlos Andres Sanabria Torres",
+      twitter: "https://twitter.com/",
+      linkedin: "https://www.linkedin.com",
+      image:
+        "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_person_people_avatar_white_tone_icon_159365.png",
+    },
+    {
+      name: "Estefanía López Varelas",
       twitter: "https://twitter.com/tomholland",
       linkedin: "https://www.linkedin.com/in/tomholland",
       image:
-        "https://pbs.twimg.com/profile_images/826578156849074177/VPb4WgnY_400x400.jpg",
+        "https://cdn.icon-icons.com/icons2/2643/PNG/512/female_woman_avatar_people_person_white_tone_icon_159370.png",
     },
   ];
 

@@ -103,7 +103,7 @@ function Home() {
             <div className="flex justify-center">
               <span className="inline-flex rounded-md shadow-sm">
                 <a
-                  href="pages/team.html"
+                  href="team"
                   className="button button__header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   Know More
