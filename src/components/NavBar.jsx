@@ -56,11 +56,6 @@ function NavBar(props) {
                   Hotels
                 </Link>
               </li>
-              <li className="nav__item">
-                <Link to={loggedIn ? "/roombooking" : "/login"} className="nav__link">
-                  Book now
-                </Link>
-              </li>
               {loggedIn ? (
                 <li className="nav__item">
                   <Link to="/bookings" className="nav__link">

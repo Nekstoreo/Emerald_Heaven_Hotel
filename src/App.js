@@ -55,7 +55,7 @@ function App() {
             path="/login"
             element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
-          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/hotels" element={<Hotels />} loggedIn={loggedIn} />
           <Route path="/team" element={<Team />} />
           <Route path="/map" element={<MapView />} />
           <Route path="/adminlogin" element={<AdminLogin />} />

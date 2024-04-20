@@ -44,7 +44,9 @@ function Bookings({ email }) {
               <p>Check In Date: {booking.checkInDate}</p>
               <p>Check Out Date: {booking.checkOutDate}</p>
               <p>Number of People: {booking.noOfPeople}</p>
+              <p>Hotel Name: {booking.hotelName}</p>
               <p>Type of Room: {booking.typeOfRoom}</p>
+              <p>Price Per Night: {booking.pricePerNight}</p>
             </li>
           ))}
         </ul>

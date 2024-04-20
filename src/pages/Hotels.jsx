@@ -7,8 +7,8 @@ function Hotels() {
 
   const navigate = useNavigate(); 
 
-  const handleCheckAvailability = () => {
-    navigate("/check-availability"); 
+  const handleCheckAvailability = (hotelName) => {
+    navigate("/check-availability", { state: { hotelName } }); // Pasar el nombre del hotel como parámetro
   };
 
   return (
@@ -48,7 +48,7 @@ function Hotels() {
             <p>2091 reviews</p>
           </div>
           <p>Prices starting from COP 441,600 per night</p>
-          <button className={styles.viewAvailabilityBtn} onClick={handleCheckAvailability}>
+          <button className={styles.viewAvailabilityBtn} onClick={ () => handleCheckAvailability("Celestino Boutique Hotel") }>
             Check availability
           </button>
         </div>
@@ -81,7 +81,7 @@ function Hotels() {
             <p>3069 reviews</p>
           </div>
           <p>Prices starting from COP 375,000 per night</p>
-          <button className={styles.viewAvailabilityBtn} onClick={handleCheckAvailability}>
+          <button className={styles.viewAvailabilityBtn} onClick={ () => handleCheckAvailability("Hotel Cavalta") }>
             Check availability
           </button>
         </div>
@@ -114,7 +114,7 @@ function Hotels() {
             <p>4712 reviews</p>
           </div>
           <p>Prices starting from COP 398,000 per night</p>
-          <button className={styles.viewAvailabilityBtn} onClick={handleCheckAvailability}>
+          <button className={styles.viewAvailabilityBtn} onClick={ () => handleCheckAvailability("Hotel Dann Carlton Belfort Medellin") }>
             Check availability
           </button>
         </div>
@@ -150,7 +150,7 @@ function Hotels() {
             <p>1233 reviews</p>
           </div>
           <p>Prices starting from COP 617,760 per night</p>
-          <button className={styles.viewAvailabilityBtn} onClick={handleCheckAvailability}>
+          <button className={styles.viewAvailabilityBtn} onClick={ () => handleCheckAvailability("Hotel York Luxury Suites Medellin") }>
             Check availability
           </button>
         </div>
@@ -182,7 +182,7 @@ function Hotels() {
             <p>193 reviews</p>
           </div>
           <p>Prices starting from COP 495,000 per night</p>
-          <button className={styles.viewAvailabilityBtn} onClick={handleCheckAvailability}>
+          <button className={styles.viewAvailabilityBtn} onClick={ () => handleCheckAvailability("Estelar La Torre Suites") }>
             Check availability
           </button>
         </div>

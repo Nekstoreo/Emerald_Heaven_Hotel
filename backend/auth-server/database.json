@@ -18,6 +18,14 @@
     {
       "email": "nestor2@gmail.com",
       "password": "$2b$10$LKdCzLmarvHmdyM.58DjYuI3FHt.8qHgEJ3IkrkTZXTEfjbXu0pkC"
+    },
+    {
+      "email": "pachanga@gmail.com",
+      "password": "$2b$10$j1adugpnAvnqMZVuIYiY1u9A.L8iKwT0RYgEAcQg4tUrwhYY26p4K"
+    },
+    {
+      "email": "nestor3@gmail.com",
+      "password": "$2b$10$lIyoWEnRepOJzGZl7S4euunJSXxcaO7Abfow/oEUo4xMlDAB7a/kC"
     }
   ]
 }

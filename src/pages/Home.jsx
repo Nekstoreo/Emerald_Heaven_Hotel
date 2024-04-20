@@ -50,6 +50,24 @@ function Home() {
     finally{
 
     }
+    // limpiar campos
+    setFullName("");
+    setEmail("");
+
+    setMessage("");
+  }
+
+  function emailValidate(event) {
+    var emailField = document.getElementById("emailId");
+    var email = event.target.value; // Obtener el valor del campo de entrada
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (email.match(pattern)) {
+      emailField.classList.add("valid");
+      emailField.classList.remove("invalid");
+    } else {
+      emailField.classList.add("invalid");
+      emailField.classList.remove("valid");
+    }
   }
 
   const images = [
@@ -153,21 +171,21 @@ function Home() {
       <div className="wrapper-rev">
         <UserReview
           quote="Beyond 5 stars! Stayed last week at this wonderful hotel. Everything exceeds ones wildest dream of a hotel. On top they have the most wonderful staff, extremely kind and helpful with every wish."
-          name="Oshane Smith"
+          name="Pedro"
           stars={["bxs-star", "bxs-star", "bxs-star", "bxs-star", "bxs-star"]}
           image="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
         />
 
         <UserReview
           quote="This is indeed a place you do not want to leave, and when you do it is with one hope to come back. Everything was great, staff was very helpful and we were extremely happy with the meeting!"
-          name="Rajesh Singh"
+          name="Pablo"
           stars={["bxs-star", "bxs-star", "bxs-star", "bxs-star", "bx-star"]}
           image="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
         />
 
         <UserReview
           quote="The service here has just been fantastic; whatever we needed was brought to us right away. The food was so delicious; the entire experience was really great. A must stay hotel for everyone."
-          name="Khushi Mittal"
+          name="Paco"
           stars={[
             "bxs-star",
             "bxs-star",
@@ -213,9 +231,11 @@ function Home() {
                 Email
               </span>
               <input
+                id="emailId"
                 className="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="text"
                 value={email}
+                onKeyDown={emailValidate}
                 onChange={handleEmailChange}
               />
             </div>

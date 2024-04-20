@@ -27,6 +27,32 @@
           "noOfPeople": "1",
           "typeOfRoom": "singlebed",
           "BookingID": "202439155857"
+        },
+        {
+          "Name": "Nestor",
+          "Email": "nestor2@gmail.com",
+          "phoneNumber": "3135036720",
+          "checkInDate": "2024-04-10",
+          "checkOutDate": "2024-04-12",
+          "noOfPeople": "1",
+          "typeOfRoom": "Luxury Suite",
+          "pricePerNight": 500,
+          "hotelName": "Celestino Boutique Hotel",
+          "roomType": "Luxury Suite",
+          "BookingID": "2024310175718"
+        },
+        {
+          "Name": "Nestor",
+          "Email": "nestor2@gmail.com",
+          "phoneNumber": "3135036720",
+          "checkInDate": "2024-04-10",
+          "checkOutDate": "2024-04-11",
+          "noOfPeople": "1",
+          "typeOfRoom": "Double Room",
+          "pricePerNight": 150,
+          "hotelName": "Celestino Boutique Hotel",
+          "roomType": "Double Room",
+          "BookingID": "2024310181749"
         }
       ]
     }

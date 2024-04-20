@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./RoomBookingPage.module.css";
 
 function RoomBookingPage({ email }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [today, setToday] = useState("");
+  const localtion = useLocation();
+  const startDate = new Date(localtion.state.startDate).toISOString().split("T")[0];
+  const endDate = new Date(localtion.state.endDate).toISOString().split("T")[0];
+  const hotelName = localtion.state.hotelName;
+  const roomType = localtion.state.roomType;
+  const numberOfGuests = localtion.state.numberOfGuests;
+  const pricePerNight = localtion.state.pricePerNight;
   const navigate = useNavigate();
+
+  // alert(`Hotel Name: ${hotelName}, Room Type: ${roomType}, Number of Guests: ${numberOfGuests}, Price Per Night: ${pricePerNight}`);
 
   const validation = (event) => {
     event.preventDefault();
@@ -28,6 +37,9 @@ function RoomBookingPage({ email }) {
     formData.forEach((value, key) => {
       formDataObject[key] = value;
     });
+
+    formDataObject["roomType"] = roomType;
+    formDataObject["pricePerNight"] = pricePerNight;
 
     if (!formDataObject.Name) {
       setErrorMessage("Please enter your name");
@@ -63,6 +75,17 @@ function RoomBookingPage({ email }) {
       setErrorMessage("Please select a room type");
       return;
     }
+
+    if (!formDataObject.pricePerNight) {
+      setErrorMessage("Please enter the price per night");
+      return;
+    }
+
+    if (!formDataObject.hotelName) {
+      setErrorMessage("Please enter the hotel name");
+      return;
+    }
+
 
     const t = new Date();
     const BookingID = `${t.getFullYear()}${t.getMonth()}${t.getDate()}${t.getHours()}${t.getMinutes()}${t.getSeconds()}`;
@@ -194,6 +217,7 @@ function RoomBookingPage({ email }) {
             name="checkInDate"
             id="date-input"
             placeholder="Check In"
+            // value={startDate}
             required
           />
           <br />
@@ -203,6 +227,7 @@ function RoomBookingPage({ email }) {
             name="checkOutDate"
             id="date-output"
             placeholder="Check Out"
+            // value={endDate}
             required
             onKeyDown={checkOutDateValidation}
           />
@@ -210,15 +235,34 @@ function RoomBookingPage({ email }) {
           <label htmlFor="noOfPeople">
             Number of People <span>*</span>
           </label>
-          <input type="number" name="noOfPeople" min="1" max="5" required />
+          <input
+            type="number"
+            name="noOfPeople"
+            min="1"
+            max="5"
+            required
+            value={numberOfGuests}
+          />
           <br />
           <label htmlFor="typeOfRoom">Type of Room : </label>
-          <select name="typeOfRoom" id="typeOfRoom">
-            <option value="singlebed">Single Bed</option>
-            <option value="doublebed">Double Bed</option>
-            <option value="queen">Queen</option>
-            <option value="king">King</option>
+          <select name="typeOfRoom" id="typeOfRoom" value={roomType} required>
+            <option value="Single Room">Single Room</option>
+            <option value="Double Room">Double Room</option>
+            <option value="Family Suite">Family Suite</option>
+            <option value="Executive Studio">Executive Studio</option>
+            <option value="Luxury Suite">Luxury Suite</option>
           </select>
+          <br />
+          <label htmlFor="pricePerNight">Price per night</label>
+          <input
+            type="text"
+            name="pricePerNight"
+            value={pricePerNight}
+            readOnly
+          />
+          <br />
+          <label htmlFor="hotelName">Hotel Name</label>
+          <input type="text" name="hotelName" value={hotelName} readOnly />
           <br />
           <input type="submit" className="btn" value={"Book Now"} />
           <label className="errorLabel">{errorMessage}</label>
