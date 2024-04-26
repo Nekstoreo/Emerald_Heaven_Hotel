@@ -11,13 +11,21 @@ function NavBar(props) {
     if (loggedIn) {
       localStorage.removeItem("user");
       props.setLoggedIn(false);
+      // Refresh the page to reflect the changes
+      window.location.reload();
     } else {
       navigate("/login");
     }
   };
 
   return (
-    <div>
+    <div
+    style={{
+      fontFamily: "Product Sans",
+      letterSpacing: "-.5px",
+      color: "inherit",
+     }}
+    >
       <header
         className="header"
         id="header"
@@ -47,9 +55,17 @@ function NavBar(props) {
             </b>
           </div>
           <div className="nav__menu ">
-          <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg" className="bg-body-tertiary">
               <Container>
-                <Nav className="me-auto">
+                <Nav
+                  className="me-auto"
+                  style={{
+                    fontFamily: "Product Sans Bold",
+                    letterSpacing: "-.5px",
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/hotels">Hotels</Nav.Link>
                   <Nav.Link href="/bookings">Bookings</Nav.Link>

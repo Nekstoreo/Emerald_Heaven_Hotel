@@ -53,17 +53,25 @@ const geojsonData = {
 
 const MapView = () => {
   return (
-    <MapContainer
-      center={[6.227397,-75.579330]}
-      zoom={14}
-      style={{ height: "100vh" }}
+    <div
+      style={{
+        
+        height: "400px",
+        marginLeft: "5rem",
+        marginRight: "5rem",
+        position: "relative",
+        backgroundColor: "#f5f5f5",
+        borderRadius: "10px",
+      }}
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <GeoJSON data={geojsonData} />
-    </MapContainer>
+      <MapContainer center={[6.227397, -75.57933]} zoom={14}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <GeoJSON data={geojsonData} />
+      </MapContainer>
+    </div>
   );
 };
 

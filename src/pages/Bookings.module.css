@@ -1,33 +1,29 @@
 .bookingsContainer {
-  max-width: 600px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
 }
 
-.bookingsContainer h2 {
-  text-align: center;
-  color: #333;
-}
-
-.bookingsList {
-  list-style: none;
-  padding: 0;
+.bookingsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .bookingItem {
-  margin-bottom: 15px;
-  padding: 10px;
+  width: 300px; /* Ancho fijo para cada booking */
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .bookingItem p {
   margin: 5px 0;
-  color: #666;
 }
 
-/* Puedes añadir más estilos aquí según necesites */
+.bookingFields {
+  font-weight: bold;
+}
