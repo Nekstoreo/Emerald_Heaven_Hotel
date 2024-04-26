@@ -37,7 +37,7 @@ function SignUp(props) {
     }
     // Verify if the email is registered
     try {
-      const response = await fetch("http://localhost:3080/check-account", {
+      const response = await fetch("http://localhost:5000/check-account", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function SignUp(props) {
 
   const signUp = async () => {
     try {
-      const response = await fetch("http://localhost:3080/auth", {
+      const response = await fetch("http://localhost:5000/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

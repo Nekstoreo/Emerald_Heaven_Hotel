@@ -35,7 +35,7 @@ const Login = (props) => {
     }
 
     try {
-      const response = await fetch("http://localhost:3080/check-account", {
+      const response = await fetch("http://localhost:5000/check-account", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const Login = (props) => {
 
   const logIn = async () => {
     try {
-      const response = await fetch("http://localhost:3080/auth", {
+      const response = await fetch("http://localhost:5000/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

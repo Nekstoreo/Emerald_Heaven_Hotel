@@ -26,7 +26,7 @@ function Home() {
     console.log("prueba");
     const formData = { fullName, email, message };
     try {
-      fetch('http://localhost:3020/contactame', {
+      fetch('http://localhost:5000/contactame', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

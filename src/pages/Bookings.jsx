@@ -12,7 +12,7 @@ function Bookings() {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3008/roombooking?email=${email}`
+          `http://localhost:5000/roombooking?email=${email}`
         );
         if (!response.ok) throw new Error("Failed to fetch bookings");
 
@@ -34,7 +34,7 @@ function Bookings() {
       }
 
       try {
-        const response = await fetch("http://localhost:3080/verify", {
+        const response = await fetch("http://localhost:5000/verify", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,6 @@ function Bookings() {
 
         const decodedToken = jwtDecode(userToken);
         const userEmail = decodedToken.email;
-
         await fetchBookings(userEmail);
       } catch (error) {
         setError(error.message);
