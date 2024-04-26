@@ -69,6 +69,7 @@ function CheckAvailability() {
       calculatePrices();
       setModified(false); // Reset modification state after updating data
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modified, adults, children, rooms, selectedOptions]);
 
   const handleModifySearch = () => {

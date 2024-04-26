@@ -2,7 +2,6 @@ import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import L from "leaflet";
 import "leaflet-defaulticon-compatibility";
 
 const geojsonData = {

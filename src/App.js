@@ -10,12 +10,14 @@ import Bookings from "./pages/Bookings";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import Hotels from "./pages/Hotels";
 import Team from "./pages/Team";
 import MapView from "./components/Map";
 import AdminLogin from "./pages/AdminLogin";
 import CheckAvailability from "./pages/CheckAvailability";
 import "./App.css";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -54,6 +56,10 @@ function App() {
           <Route
             path="/login"
             element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
           <Route path="/hotels" element={<Hotels />} loggedIn={loggedIn} />
           <Route path="/team" element={<Team />} />

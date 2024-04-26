@@ -2,30 +2,15 @@
   "users": [
     {
       "email": "nestor@gmail.com",
-      "password": "$2b$10$Er/b3Xp6U4mQslvZjAYAWen1THFvzbXXwfD8235FD3EHhOLt0a/Xm",
-      "reserves": [
-        {
-          "Name": "ASDASDSAD",
-          "Email": "ASAA@gmail.com",
-          "phoneNumber": "3135036720",
-          "checkInDate": "2024-04-10",
-          "checkOutDate": "2024-04-10",
-          "noOfPeople": "2",
-          "typeOfRoom": "singlebed"
-        }
-      ]
+      "password": "$2b$10$Er/b3Xp6U4mQslvZjAYAWen1THFvzbXXwfD8235FD3EHhOLt0a/Xm"
     },
     {
       "email": "nestor2@gmail.com",
       "password": "$2b$10$LKdCzLmarvHmdyM.58DjYuI3FHt.8qHgEJ3IkrkTZXTEfjbXu0pkC"
     },
     {
-      "email": "pachanga@gmail.com",
-      "password": "$2b$10$j1adugpnAvnqMZVuIYiY1u9A.L8iKwT0RYgEAcQg4tUrwhYY26p4K"
-    },
-    {
-      "email": "nestor3@gmail.com",
-      "password": "$2b$10$lIyoWEnRepOJzGZl7S4euunJSXxcaO7Abfow/oEUo4xMlDAB7a/kC"
+      "email": "nestor4@gmail.com",
+      "password": "$2b$10$B.Cg197yLgApdHjaC6PRn.G8UmwipH9F.0pmgiAwpOKElNfwzVFoq"
     }
   ]
 }

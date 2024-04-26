@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Button, Navbar, Container, Nav } from "react-bootstrap";
 
 function NavBar(props) {
-  const { loggedIn, email } = props;
+  const { loggedIn } = props;
   const navigate = useNavigate();
 
   const onButtonClick = () => {
@@ -20,7 +21,11 @@ function NavBar(props) {
       <header
         className="header"
         id="header"
-        style={{ fontFamily: "Inter", background: "rgb(255, 255, 255)", height: "auto"}}
+        style={{
+          fontFamily: "Inter",
+          background: "rgb(255, 255, 255)",
+          height: "auto",
+        }}
       >
         <nav className="nav container">
           <div style={{ display: "inline-flex", adjustContent: "center" }}>
@@ -28,7 +33,6 @@ function NavBar(props) {
             <b>
               <Link
                 to="/"
-                className="nav__logo"
                 style={{
                   fontFamily: "Product Sans Bold",
                   letterSpacing: "-.5px",
@@ -38,44 +42,32 @@ function NavBar(props) {
                   marginLeft: "5px", // Espacio entre el favicon y la etiqueta
                 }}
               >
-                {" "}
-                Emerald Haven{" "}
+                Emerald Haven
               </Link>
             </b>
           </div>
-          {/* Closing tag for <b> element */}
           <div className="nav__menu ">
-            <ul className="nav__list">
-              <li className="nav__item">
-                <Link to="/" className="">
-                  Home
-                </Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/hotels" className="nav__link">
-                  Hotels
-                </Link>
-              </li>
-              {loggedIn ? (
-                <li className="nav__item">
-                  <Link to="/bookings" className="nav__link">
-                    My Bookings
-                  </Link>
-                </li>
-              ) : (
-                <div />
-              )}
-            </ul>
+          <Navbar expand="lg" className="bg-body-tertiary">
+              <Container>
+                <Nav className="me-auto">
+                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="/hotels">Hotels</Nav.Link>
+                  <Nav.Link href="/bookings">Bookings</Nav.Link>
+                </Nav>
+              </Container>
+            </Navbar>
           </div>
-          {/* Closing tag for <div> element */}
-          {loggedIn ? <div>{email}</div> : <div />}
           <div className={"buttonContainer"}>
-            <input
-              className={"inputButton"}
-              type="button"
-              onClick={onButtonClick}
-              value={loggedIn ? "Log out" : "Sign In / Log in"}
-            />
+            <Button variant="outline-primary" onClick={onButtonClick}>
+              {loggedIn ? "Log out" : "Log in"}
+            </Button>
+            {!loggedIn ? (
+              <Button variant="primary" onClick={() => navigate("/signup")}>
+                Sign up
+              </Button>
+            ) : (
+              <div />
+            )}
           </div>
         </nav>
       </header>

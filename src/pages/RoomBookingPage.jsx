@@ -6,8 +6,8 @@ function RoomBookingPage({ email }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [today, setToday] = useState("");
   const localtion = useLocation();
-  const startDate = new Date(localtion.state.startDate).toISOString().split("T")[0];
-  const endDate = new Date(localtion.state.endDate).toISOString().split("T")[0];
+  // const startDate = new Date(localtion.state.startDate).toISOString().split("T")[0];
+  // const endDate = new Date(localtion.state.endDate).toISOString().split("T")[0];
   const hotelName = localtion.state.hotelName;
   const roomType = localtion.state.roomType;
   const numberOfGuests = localtion.state.numberOfGuests;

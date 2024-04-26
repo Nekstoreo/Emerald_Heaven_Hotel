@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const Login = (props) => {
+function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [userExists, setUserExists] = useState("");
 
   const navigate = useNavigate();
 
-  const onButtonClick = async () => {
+  const onSignUpButtonClick = async () => {
     setEmailError("");
     setPasswordError("");
 
@@ -33,7 +35,7 @@ const Login = (props) => {
       setPasswordError("The password must be 8 characters or longer");
       return;
     }
-
+    // Verify if the email is registered
     try {
       const response = await fetch("http://localhost:3080/check-account", {
         method: "POST",
@@ -44,17 +46,19 @@ const Login = (props) => {
       });
       const data = await response.json();
       if (data.userExists) {
-        logIn();
+        // If the email is registered, tell the user already exists
+        setUserExists("User already exists, please ");
+      } else if (!data.userExists) {
+        // If the email is not registered, sign up the user
+        signUp();
       }
     } catch (error) {
       console.error("Error checking account:", error);
       // Handle error if needed
     }
-
-    setEmailError("This email is not registered");
   };
 
-  const logIn = async () => {
+  const signUp = async () => {
     try {
       const response = await fetch("http://localhost:3080/auth", {
         method: "POST",
@@ -77,11 +81,10 @@ const Login = (props) => {
       // Handle error if needed
     }
   };
-
   return (
     <div className={"mainContainer"}>
       <div className={"titleContainer"}>
-        <div>Login</div>
+        <div>Create an account</div>
       </div>
       <br />
       <div className={"inputContainer"}>
@@ -105,20 +108,31 @@ const Login = (props) => {
         <label className="errorLabel">{passwordError}</label>
       </div>
       <br />
-      <div>
-        <label className="alreadyHaveAccount">
-          Don't have an account?
-          <a href="/signup" className={"linkLabel"}> Sign up</a>
-        </label>
+      <div className={"alreadyHaveAccount"}>
+        {userExists ? (
+          <div>
+            <label>{userExists}</label>
+            <a href="/login" className={"linkLabel"}> Log in</a>
+          </div>
+        ) : (
+          <div>
+            <label>Already have an account?</label>
+            <a href="/login" className={"linkLabel"}> Log in</a>
+          </div>
+        )}
       </div>
       <br />
       <div className={"inputContainer"}>
-        <Button variant="primary" onClick={onButtonClick} className={"button"}>
-          Log in
+        <Button
+          variant="primary"
+          onClick={onSignUpButtonClick}
+          className={"button"}
+        >
+          Sign up
         </Button>
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+export default SignUp;
