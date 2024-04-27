@@ -70,7 +70,7 @@ function Bookings() {
       }
       >Your Bookings</h2>
       {bookings.length === 0 ? (
-        <div className={styles.message}>No bookings found.</div>
+        <div className={styles.message}>No bookings found. Please Login or Sign Up to book a room.</div>
       ) : (
         <div className={styles.bookingsGrid}>
           {bookings.map((booking, index) => (

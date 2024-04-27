@@ -717,7 +717,7 @@ body.dark-theme {
 
 .banner {
   width: 100%;
-  height: 87vh;
+  height: 60vh;
   background-image: url(https://content.r9cdn.net/rimg/dimg/34/a4/c96235ea-city-30430-177d8921835.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -726,7 +726,7 @@ body.dark-theme {
 }
 
 .content {
-  padding-top: 200px;
+  padding-top: 3rem;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   width: auto;

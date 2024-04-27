@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function NavBar(props) {
   const { loggedIn } = props;
@@ -37,10 +37,11 @@ function NavBar(props) {
       >
         <nav className="nav container">
           <div style={{ display: "inline-flex", adjustContent: "center" }}>
-            <img src="favicon-32x32.png" alt="Emerald Haven" />
+            <img src="favicon-32x32.png" alt="" />
             <b>
-              <Link
+              <NavLink
                 to="/"
+                className={"nav__logo"}
                 style={{
                   fontFamily: "Product Sans Bold",
                   letterSpacing: "-.5px",
@@ -51,28 +52,34 @@ function NavBar(props) {
                 }}
               >
                 Emerald Haven
-              </Link>
+              </NavLink>
             </b>
           </div>
-          <div className="nav__menu ">
-            <Navbar expand="lg" className="bg-body-tertiary">
-              <Container>
-                <Nav
-                  className="me-auto"
-                  style={{
-                    fontFamily: "Product Sans Bold",
-                    letterSpacing: "-.5px",
-                    textDecoration: "none",
-                    color: "inherit",
-                  }}
-                >
-                  <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/hotels">Hotels</Nav.Link>
-                  <Nav.Link href="/bookings">Bookings</Nav.Link>
-                </Nav>
-              </Container>
-            </Navbar>
-          </div>
+          <div
+         className={"nav__menu"}
+         id="nav-menu"
+       >
+         <ul className="nav__list">
+           <li className="nav__item">
+             <NavLink to="/" className="nav__link">
+               Home
+             </NavLink>
+           </li>
+           <li className="nav__item">
+             <NavLink to="/hotels" className="nav__link">
+                Hotels
+             </NavLink>
+           </li>
+           <li className="nav__item">
+             <NavLink
+               to="/bookings"
+               className="nav__link"
+             >
+                Bookings
+             </NavLink>
+           </li>
+         </ul>
+       </div>
           <div className={"buttonContainer"}>
             <Button variant="outline-primary" onClick={onButtonClick}>
               {loggedIn ? "Log out" : "Log in"}
