@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function SignUp(props) {
+function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -135,4 +135,4 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+export default Register;

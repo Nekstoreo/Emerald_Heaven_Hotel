@@ -12,7 +12,7 @@ function Bookings() {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:5000/roombooking?email=${email}`
+          `http://localhost:5000/mybookings?email=${email}`
         );
         if (!response.ok) throw new Error("Failed to fetch bookings");
 
@@ -75,13 +75,17 @@ function Bookings() {
         <div className={styles.bookingsGrid}>
           {bookings.map((booking, index) => (
             <div key={index} className={styles.bookingItem}>
+              <p className="bookingFields">Booking ID: {booking.BookingID}</p>
               <p className="bookingFields">Name: {booking.Name}</p>
+              <p className="bookingFields">Phone Number: {booking.phoneNumber}</p>
               <p className="bookingFields">Check In Date: {booking.checkInDate}</p>
               <p className="bookingFields">Check Out Date: {booking.checkOutDate}</p>
-              <p className="bookingFields">Number of People: {booking.noOfPeople}</p>
               <p className="bookingFields">Hotel Name: {booking.hotelName}</p>
               <p className="bookingFields">Type of Room: {booking.typeOfRoom}</p>
-              <p className="bookingFields">Price Per Night: {booking.pricePerNight}</p>
+              <p className="bookingFields">Number of Guests: {booking.noOfGuests}</p>
+              <p className="bookingFields">Required Rooms: {booking.requiredRooms}</p>
+              <p className="bookingFields">Total Price: {booking.totalPrice}</p>
+              <p className="bookingFields">Booked Room IDs: {booking.bookedRoomIds.join(", ")}</p>
             </div>
           ))}
         </div>

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -26,36 +25,34 @@ function Home() {
     console.log("prueba");
     const formData = { fullName, email, message };
     try {
-      fetch('http://localhost:5000/contactame', {
-        method: 'POST',
+      fetch("http://localhost:5000/contactame", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        alert(data.message);
-        navigate('/');
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
-    finally{
-
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert(data.message);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } finally {
     }
     // limpiar campos
     setFullName("");
     setEmail("");
 
     setMessage("");
-  }
+  };
 
   function emailValidate(event) {
     var emailField = document.getElementById("emailId");
@@ -81,19 +78,18 @@ function Home() {
     "/assets/img/hotels/h8.jpg",
   ];
   return (
-    <div>
+    <div className="py-4">
       {/* Banner Section */}
-      <section className="banner">
+      <section className="banner" style={{ height: "60vh" }}>
         <div className="content">
-          <div className="title">Emerald Haven</div>
-          <div className="top-subtitle subtitle">Best Memories Start Here</div>
+          <div className="title"> Emerald Haven</div>
         </div>
       </section>
       {/* About Section */}
       <section
         className="text-gray-600 body-font"
         id="about"
-        style={{ fontFamily: "Inter", marginTop: "12%" }}
+        style={{ fontFamily: "Inter" }}
       >
         <div
           className="container mx-auto flex md:flex-row flex-col items-center"
@@ -197,7 +193,7 @@ function Home() {
         />
       </div>
 
-          {/* Contact Section */}
+      {/* Contact Section */}
       <section
         className="text-gray-100 px-8 py-12"
         style={{ fontFamily: "Inter" }}
@@ -260,7 +256,6 @@ function Home() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

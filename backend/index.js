@@ -1,20 +1,24 @@
 import express from "express";
 import authRouter from "./authRouter.js";
-import availabilityRouter from "./availabilityRouter.js";
 import contactRouter from "./contactsRouter.js";
 import mapRouter from "./mapRouter.js";
-import reserveRouter from "./reserveRouter.js";
+import bookingRouter from "./bookingRouter.js";
+import hotelRouter from "./hotelsRouter.js";
 import cors from "cors";
 import dotenv from "dotenv";
-const app = express();
 dotenv.config();
+
+const app = express();
 const PORT = process.env.PORT || 5000;
+
 app.use(cors());
+
 app.use(authRouter);
-app.use(availabilityRouter);
 app.use(contactRouter);
 app.use(mapRouter);
-app.use(reserveRouter);
+app.use(bookingRouter);
+app.use(hotelRouter);
+
 
 app.get("/", (_req, res) => {
   res.send(

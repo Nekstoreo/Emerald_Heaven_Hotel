@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import BookingConfirmation from "./components/BookingConfirmation";
 import BookingCancelled from "./components/BookingCancelled";
-import BookingSuccessfull from "./components/BookingSuccessfull";
-import RoomBookingPage from "./pages/RoomBookingPage";
+import BookingSuccessful from "./components/BookingSuccessful";
 import Bookings from "./pages/Bookings";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Register from "./pages/Register";
 import Hotels from "./pages/Hotels";
 import Team from "./pages/Team";
 import MapView from "./components/Map";
@@ -55,16 +55,16 @@ function App() {
             element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
           <Route
-            path="/signup"
-            element={<SignUp setLoggedIn={setLoggedIn} setEmail={setEmail} />}
+            path="/register"
+            element={<Register setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
           <Route path="/hotels" element={<Hotels />} loggedIn={loggedIn} />
           <Route path="/team" element={<Team />} />
           <Route path="/map" element={<MapView />} />
-          <Route path="/roombooking" element={<RoomBookingPage email={email} />} />
           <Route path="/bookings" element={<Bookings email={email} />} />
+          <Route path="/bookingconfirmation" element={<BookingConfirmation />} />
           <Route path="/bookingcancelled" element={<BookingCancelled />} />
-          <Route path="/bookingsuccessfull" element={<BookingSuccessfull />} />
+          <Route path="/bookingsuccessful" element={<BookingSuccessful />} />
           <Route path="/check-availability" element={<CheckAvailability />} />
         </Routes>
         <Footer />

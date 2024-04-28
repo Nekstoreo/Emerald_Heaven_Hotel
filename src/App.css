@@ -39,7 +39,6 @@
   align-items: center;
   justify-content: center;
   height: auto;
-  gap: 5px; /* Espacio entre los botones */
 }
 
 .inputContainer {
@@ -135,4 +134,12 @@
   text-decoration: "none";
   color: "inherit";
   margin-left: "5px";
+}
+
+@media print {
+  header,
+  footer,
+  button {
+    display: none;
+  }
 }

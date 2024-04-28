@@ -45,13 +45,14 @@ const Login = (props) => {
       const data = await response.json();
       if (data.userExists) {
         logIn();
+      } else {
+        setEmailError("This email is not registered hey");
       }
     } catch (error) {
       console.error("Error checking account:", error);
       // Handle error if needed
+      setEmailError("An error occurred");
     }
-
-    setEmailError("This email is not registered");
   };
 
   const logIn = async () => {
