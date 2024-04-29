@@ -6,6 +6,7 @@ function Bookings() {
   const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [notLoggedIn, setNotLoggedIn] = useState(false);
 
   useEffect(() => {
     async function fetchBookings(email) {
@@ -41,7 +42,10 @@ function Bookings() {
             "jwt-token": userToken,
           },
         });
-        if (!response.ok) throw new Error("Failed to verify token");
+        if (!response.ok){
+          throw new Error("Failed to verify user");
+          setNotLoggedIn(true);
+        }
 
         const decodedToken = jwtDecode(userToken);
         const userEmail = decodedToken.email;
@@ -55,8 +59,7 @@ function Bookings() {
     verifyTokenAndFetchBookings();
   }, []);
 
-  if (isLoading) return <div className={styles.message}>Loading...</div>;
-  if (error) return <div className={styles.error}>Error: {error}</div>;
+
   return (
     <div className={styles.bookingsContainer}>
       <h2
@@ -69,27 +72,36 @@ function Bookings() {
        }
       }
       >Your Bookings</h2>
-      {bookings.length === 0 ? (
-        <div className={styles.message}>No bookings found. Please Login or Sign Up to book a room.</div>
-      ) : (
+      {bookings.length > 0 ? (
         <div className={styles.bookingsGrid}>
-          {bookings.map((booking, index) => (
-            <div key={index} className={styles.bookingItem}>
-              <p className="bookingFields">Booking ID: {booking.BookingID}</p>
-              <p className="bookingFields">Name: {booking.Name}</p>
-              <p className="bookingFields">Phone Number: {booking.phoneNumber}</p>
-              <p className="bookingFields">Check In Date: {booking.checkInDate}</p>
-              <p className="bookingFields">Check Out Date: {booking.checkOutDate}</p>
-              <p className="bookingFields">Hotel Name: {booking.hotelName}</p>
-              <p className="bookingFields">Type of Room: {booking.typeOfRoom}</p>
-              <p className="bookingFields">Number of Guests: {booking.noOfGuests}</p>
-              <p className="bookingFields">Required Rooms: {booking.requiredRooms}</p>
-              <p className="bookingFields">Total Price: {booking.totalPrice}</p>
-              <p className="bookingFields">Booked Room IDs: {booking.bookedRoomIds.join(", ")}</p>
-            </div>
-          ))}
+        {bookings.map((booking, index) => (
+          <div key={index} className={styles.bookingItem}>
+            <p className="bookingFields">Booking ID: {booking.BookingID}</p>
+            <p className="bookingFields">Name: {booking.Name}</p>
+            <p className="bookingFields">Phone Number: {booking.phoneNumber}</p>
+            <p className="bookingFields">Check In Date: {booking.checkInDate}</p>
+            <p className="bookingFields">Check Out Date: {booking.checkOutDate}</p>
+            <p className="bookingFields">Hotel Name: {booking.hotelName}</p>
+            <p className="bookingFields">Type of Room: {booking.typeOfRoom}</p>
+            <p className="bookingFields">Number of Guests: {booking.noOfGuests}</p>
+            <p className="bookingFields">Required Rooms: {booking.requiredRooms}</p>
+            <p className="bookingFields">Total Price: {booking.totalPrice}</p>
+            <p className="bookingFields">Booked Room IDs: {booking.bookedRoomIds.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+
+      ) : (
+        <div className={styles.message}>
+          <p>
+            Please <a href="/login">login</a> to view your bookings.
+            If you don't have an account, you can <a href="/signup">signup</a> here.
+          </p>
+            
         </div>
-      )}
+      )
+
+      }
     </div>
   );
 }

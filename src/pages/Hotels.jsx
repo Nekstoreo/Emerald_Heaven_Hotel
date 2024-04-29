@@ -32,7 +32,6 @@ const Hotels = () => {
       <section className="banner" style={{ height: "60vh" }}>
         <div className="content">
           <div className="title">Our Hotels</div>
-          <div className="top-subtitle subtitle">Emerald Haven</div>
         </div>
       </section>
 
