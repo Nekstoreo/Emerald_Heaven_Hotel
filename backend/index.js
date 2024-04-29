@@ -1,21 +1,19 @@
 import express from "express";
-import authRouter from "./authRouter.js";
-import contactRouter from "./contactsRouter.js";
-import mapRouter from "./mapRouter.js";
-import bookingRouter from "./bookingRouter.js";
-import hotelRouter from "./hotelsRouter.js";
+import authRouter from "./routes/authRouter.js";
+import contactRouter from "./routes/contactRouter.js";
+import bookingRouter from "./routes/bookingRouter.js";
+import hotelRouter from "./routes/hotelRouter.js";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.use(cors());
 
 app.use(authRouter);
 app.use(contactRouter);
-app.use(mapRouter);
 app.use(bookingRouter);
 app.use(hotelRouter);
 

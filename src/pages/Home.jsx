@@ -1,72 +1,8 @@
+import React from "react";
 import UserReview from "../components/UserReview";
 import ImageSlider from "../components/ImageSlider";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import ContactUs from "../components/ContactUs";
 function Home() {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
-
-  const handleFullNameChange = (event) => {
-    setFullName(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleMessageChange = (event) => {
-    setMessage(event.target.value);
-  };
-
-  const onButtonClick = () => {
-    console.log("prueba");
-    const formData = { fullName, email, message };
-    try {
-      fetch("http://localhost:5000/contactame", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          alert(data.message);
-          navigate("/");
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    } finally {
-    }
-    // limpiar campos
-    setFullName("");
-    setEmail("");
-
-    setMessage("");
-  };
-
-  function emailValidate(event) {
-    var emailField = document.getElementById("emailId");
-    var email = event.target.value; // Obtener el valor del campo de entrada
-    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (email.match(pattern)) {
-      emailField.classList.add("valid");
-      emailField.classList.remove("invalid");
-    } else {
-      emailField.classList.add("invalid");
-      emailField.classList.remove("valid");
-    }
-  }
-
   const images = [
     "/assets/img/hotels/h1.jpg",
     "/assets/img/hotels/h2.jpg",
@@ -192,70 +128,7 @@ function Home() {
           image="https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-hooded-computer-hacker-with-laptop-icon-png-image_1762179.jpg"
         />
       </div>
-
-      {/* Contact Section */}
-      <section
-        className="text-gray-100 px-8 py-12"
-        style={{ fontFamily: "Inter" }}
-      >
-        <div className="text-center w-full"></div>
-        <div className="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg">
-          <div className="flex flex-col justify-between">
-            <div>
-              <h2 className="sec-head">Contact Us</h2>
-              <img
-                src="assets/img/contact.svg"
-                style={{ marginTop: "50px", paddingRight: "50px" }}
-                alt=""
-              />
-            </div>
-          </div>
-          <div className="mt-8">
-            <div>
-              <span className="uppercase text-sm text-gray-600 font-bold">
-                Full Name
-              </span>
-              <input
-                className="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                type="text"
-                value={fullName}
-                onChange={handleFullNameChange}
-              />
-            </div>
-            <div className="mt-8">
-              <span className="uppercase text-sm text-gray-600 font-bold">
-                Email
-              </span>
-              <input
-                id="emailId"
-                className="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                type="text"
-                value={email}
-                onKeyDown={emailValidate}
-                onChange={handleEmailChange}
-              />
-            </div>
-            <div className="mt-8">
-              <span className="uppercase text-sm text-gray-600 font-bold">
-                Message
-              </span>
-              <textarea
-                className="w-full h-32 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                value={message}
-                onChange={handleMessageChange}
-              ></textarea>
-            </div>
-            <div className="mt-8">
-              <button
-                className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
-                onClick={onButtonClick}
-              >
-                Send Message
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactUs />
     </div>
   );
 }
