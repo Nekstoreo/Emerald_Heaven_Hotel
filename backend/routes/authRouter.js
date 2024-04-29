@@ -10,12 +10,6 @@ const router = express.Router();
 const jwtSecretKey = process.env.JWT_SECRET_KEY;
 const expirationTime = process.env.TOKEN_EXPIRATION_TIME;
 
-const mongoDB = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.DB_NAME;
-
-mongoose.connect(mongoDB)
-  .then(() => console.log('Conexión exitosa a MongoDB'))
-  .catch(err => console.error('Error al conectar con MongoDB', err));
-
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 

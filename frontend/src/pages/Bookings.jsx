@@ -4,13 +4,9 @@ import { jwtDecode } from "jwt-decode";
 
 function Bookings() {
   const [bookings, setBookings] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [notLoggedIn, setNotLoggedIn] = useState(false);
 
   useEffect(() => {
     async function fetchBookings(email) {
-      setIsLoading(true);
       try {
         const response = await fetch(
           `http://localhost:5000/mybookings?email=${email}`
@@ -20,17 +16,13 @@ function Bookings() {
         const data = await response.json();
         setBookings(data);
       } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     }
 
     async function verifyTokenAndFetchBookings() {
       const userToken = JSON.parse(localStorage.getItem("user"))?.token;
 
       if (!userToken) {
-        setIsLoading(false);
         return;
       }
 
@@ -44,15 +36,12 @@ function Bookings() {
         });
         if (!response.ok){
           throw new Error("Failed to verify user");
-          setNotLoggedIn(true);
         }
 
         const decodedToken = jwtDecode(userToken);
         const userEmail = decodedToken.email;
         await fetchBookings(userEmail);
       } catch (error) {
-        setError(error.message);
-        setIsLoading(false);
       }
     }
 

@@ -5,10 +5,28 @@ import bookingRouter from "./routes/bookingRouter.js";
 import hotelRouter from "./routes/hotelRouter.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
+
+const mongoDB =
+  "mongodb://" +
+  process.env.DB_USER +
+  ":" +
+  process.env.DB_PASS +
+  "@" +
+  process.env.DB_HOST +
+  ":" +
+  process.env.DB_PORT +
+  "/" +
+  process.env.DB_NAME;
+
+mongoose
+  .connect(mongoDB)
+  .then(() => console.log("Conexión exitosa a MongoDB"))
+  .catch((err) => console.error("Error al conectar con MongoDB", err));
 
 app.use(cors());
 
@@ -16,7 +34,6 @@ app.use(authRouter);
 app.use(contactRouter);
 app.use(bookingRouter);
 app.use(hotelRouter);
-
 
 app.get("/", (_req, res) => {
   res.send(

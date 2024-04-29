@@ -4,23 +4,6 @@ import dotenv from "dotenv";
 import Hotel from "../models/hotelsModel.js";
 dotenv.config();
 
-const mongoDB =
-  "mongodb://" +
-  process.env.DB_USER +
-  ":" +
-  process.env.DB_PASS +
-  "@" +
-  process.env.DB_HOST +
-  ":" +
-  process.env.DB_PORT +
-  "/" +
-  process.env.DB_NAME;
-
-mongoose
-  .connect(mongoDB)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
-
 const router = express.Router();
 
 router.get("/hotels", async (_req, res) => {
@@ -43,12 +26,12 @@ router.get("/hotels/rooms", async (req, res) => {
     if (!hotel) {
       return res.status(404).json({ message: "Hotel not found" });
     }
-    
+
     const modifiedRoomtypes = hotel.roomtypes.map((roomtype) => ({
       type: roomtype.type,
       price: roomtype.price,
       maxguests: roomtype.maxguests,
-      availablecount: roomtype.rooms.filter((room) => room.available).length
+      availablecount: roomtype.rooms.filter((room) => room.available).length,
     }));
 
     res.json(modifiedRoomtypes);

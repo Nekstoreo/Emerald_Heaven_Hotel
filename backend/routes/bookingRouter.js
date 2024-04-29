@@ -7,23 +7,6 @@ dotenv.config();
 
 const router = express.Router();
 
-const mongoDB =
-  "mongodb://" +
-  process.env.DB_USER +
-  ":" +
-  process.env.DB_PASS +
-  "@" +
-  process.env.DB_HOST +
-  ":" +
-  process.env.DB_PORT +
-  "/" +
-  process.env.DB_NAME;
-
-mongoose
-  .connect(mongoDB)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
-
 router.post("/booking", async (req, res) => {
   const bookingData = req.body.formDataObject;
 
@@ -58,19 +41,18 @@ router.post("/booking", async (req, res) => {
     });
 
     // save the booking data to the database in the email field if the email is not already in the database
-    await Booking
-      .updateOne(
-        { email: bookingData.Email },
-        {
-          $push: {
-            reserves: {
-              ...bookingData,
-              bookedRoomIds,
-            },
+    await Booking.updateOne(
+      { email: bookingData.Email },
+      {
+        $push: {
+          reserves: {
+            ...bookingData,
+            bookedRoomIds,
           },
         },
-        { upsert: true }
-      );
+      },
+      { upsert: true }
+    );
 
     await hotel.save();
 
@@ -91,7 +73,7 @@ router.get("/mybookings", async (req, res) => {
       { _id: 0, "reserves._id": 0 }
     );
     // only return the reserves array
-    res.json( userBookings.reserves );
+    res.json(userBookings.reserves);
   } catch (error) {
     console.error("Error fetching bookings:", error);
     res
