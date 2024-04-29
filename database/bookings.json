@@ -1,0 +1,7 @@
+[
+  {
+    "_id": {"$oid": "662f10e84146469cf041366f"},
+    "email": "nestor@gmail.com",
+    "reserves": "[{BookingID=2024328183029, Name=Nestor Miguel Gutierrez, phoneNumber=3135036720, checkInDate=2024-04-28, checkOutDate=2024-04-29, hotelName=Celestino Boutique Hotel, typeOfRoom=Double Room, noOfGuests=2, requiredRooms=1, totalPrice=521600, bookedRoomIds=[11D]}, {BookingID=2024328185024, Name=Nestor Miguel Gutierrez, phoneNumber=3135036720, checkInDate=2024-04-28, checkOutDate=2024-04-29, hotelName=Celestino Boutique Hotel, typeOfRoom=Family Suite, noOfGuests=4, requiredRooms=2, totalPrice=1323200, bookedRoomIds=[21F, 22F]}, {BookingID=202432901219, Name=Nestor Gutierrez, phoneNumber=3135036720, checkInDate=2024-04-30, checkOutDate=2024-05-01, hotelName=Celestino Boutique Hotel, typeOfRoom=Luxury Suite, noOfGuests=4, requiredRooms=1, totalPrice=941600, bookedRoomIds=[41L], _id=662f2c33f864d783a989c728}]"
+  }
+]

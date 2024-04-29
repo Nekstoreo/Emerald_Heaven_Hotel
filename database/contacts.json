@@ -1,0 +1,55 @@
+[
+  {
+    "_id": {"$oid": "662f2f629a07618e4c9321f2"},
+    "__v": 0,
+    "email": "testuser@example.com",
+    "fullName": "Test User",
+    "message": "This is a test message."
+  },
+  {
+    "_id": {"$oid": "662f3225707cc309fda5c58e"},
+    "__v": 0,
+    "email": "testuser@example.com",
+    "fullName": "Test User",
+    "message": "This is a test message."
+  },
+  {
+    "_id": {"$oid": "662f3227707cc309fda5c590"},
+    "__v": 0,
+    "email": "testuser@example.com",
+    "fullName": "Test User",
+    "message": "This is a test message."
+  },
+  {
+    "_id": {"$oid": "662f344a0c0a8e3ddff4a6c5"},
+    "email": "juan@example.com",
+    "fullName": "Juan Pérez",
+    "message": "Hola, me gustaría obtener más información sobre sus servicios."
+  },
+  {
+    "_id": {"$oid": "662f344a0c0a8e3ddff4a6c6"},
+    "email": "maria@example.com",
+    "fullName": "María González",
+    "message": "Buen día, quisiera hacer una consulta sobre el producto X."
+  },
+  {
+    "_id": {"$oid": "662f344a0c0a8e3ddff4a6c7"},
+    "email": "pedro@example.com",
+    "fullName": "Pedro Rodríguez",
+    "message": "Estoy interesado en concertar una reunión para discutir un proyecto."
+  },
+  {
+    "_id": {"$oid": "662f372e707cc309fda5c593"},
+    "__v": 0,
+    "email": "",
+    "fullName": "",
+    "message": ""
+  },
+  {
+    "_id": {"$oid": "662f39fbed1febeb8e610200"},
+    "__v": 0,
+    "email": "un.random@upb.edu.co",
+    "fullName": "Un Random",
+    "message": "asdasdasdasdasd"
+  }
+]
