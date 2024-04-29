@@ -109,7 +109,7 @@ const Login = (props) => {
       <div>
         <label className="alreadyHaveAccount">
           Don't have an account?
-          <a href="/signup" className={"linkLabel"}> Sign up</a>
+          <a href="/register" className={"linkLabel"}> Sign up</a>
         </label>
       </div>
       <br />
