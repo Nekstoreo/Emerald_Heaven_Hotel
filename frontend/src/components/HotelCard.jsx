@@ -19,8 +19,6 @@ const HotelCard = ({ hotel, handleCheckAvailability }) => {
       <div className={styles.rightContent}>
         <div className={styles.hotelRating}>
           <p>Rating: {rating}</p>
-          <p>Review: {review}</p>
-          <p>Review Count: {reviewCount}</p>
         </div>
         <p>Prices starting from {price} per night</p>
         <button className={styles.viewAvailabilityBtn} onClick={() => handleCheckAvailability(name)}>
