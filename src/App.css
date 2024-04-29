@@ -136,6 +136,14 @@
   margin-left: "5px";
 }
 
+#reservationDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
 @media print {
   header,
   footer,

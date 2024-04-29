@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import styles from "./BookingConfirmation.module.css";
-import { emailValidate, numberValidate, checkOutDateValidation } from "./formValidations";
+import {
+  emailValidate,
+  numberValidate,
+  checkOutDateValidation,
+} from "./formValidations";
 
-
-function RoomBookingPage() {
+function BookingConfirmation() {
   const [errorMessage, setErrorMessage] = useState("");
   const [today, setToday] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const hotelName = location.state.reservationData.hotelName;
-  const roomType = location.state.reservationData.roomType;
-  const guests = location.state.reservationData.guests;
-  const requiredRooms = location.state.reservationData.requiredRooms;
-  const totalPrice = location.state.reservationData.totalPrice;
+  const { hotelName, roomType, guests, requiredRooms, totalPrice } =
+    location.state.reservationData;
 
   const validation = (event) => {
     event.preventDefault();
@@ -52,14 +53,13 @@ function RoomBookingPage() {
       totalPrice: "Please enter the total price",
       hotelName: "Please enter the hotel name",
     };
-    
+
     for (const field in validations) {
       if (!formDataObject[field]) {
         setErrorMessage(validations[field]);
         return;
       }
     }
-    
 
     const t = new Date();
     const BookingID = `${t.getFullYear()}${t.getMonth()}${t.getDate()}${t.getHours()}${t.getMinutes()}${t.getSeconds()}`;
@@ -79,8 +79,6 @@ function RoomBookingPage() {
           return;
         }
         if (response.bookedRoomIds) {
-          // ir a la página de éxito de reserva y pasar los datos de la reserva
-          // junto con los ids de las habitaciones reservadas
           navigate("/bookingsuccessful", {
             state: {
               reservationData: formDataObject,
@@ -93,7 +91,6 @@ function RoomBookingPage() {
         setErrorMessage("An error occurred while processing your request");
       });
   };
-
 
   useEffect(() => {
     const todayDate = new Date().toISOString().split("T")[0];
@@ -115,11 +112,26 @@ function RoomBookingPage() {
     };
   }, []);
 
+  const tryGetEmailFromUserToken = () => {
+    // Fetch the user email from the decoded token from local storage
+    const userToken = JSON.parse(localStorage.getItem("user"))?.token;
+    const decodedToken = jwtDecode(userToken);
+    return decodedToken.email;
+  }
+
+  useEffect(() => {
+    const userEmail = tryGetEmailFromUserToken();
+    if (userEmail) {
+      document.getElementsByName("Email")[0].value = userEmail;
+      // disable the email input field
+      document.getElementsByName("Email")[0].setAttribute("readonly", true);
+    }
+  }
+  , []);
+  
+
   return (
-    <div
-      
-      className={styles["BookingContainer"]}
-    >
+    <div className={styles["BookingContainer"]}>
       <form className={styles["BookingForm"]} onSubmit={validation}>
         <label style={{ marginTop: "10px" }}>
           Name <span>*</span>
@@ -141,7 +153,7 @@ function RoomBookingPage() {
           Phone Number <span>*</span>
         </label>
         <input
-          type="number"
+          type="text"
           id="phoneNumber"
           name="phoneNumber"
           required
@@ -211,4 +223,4 @@ function RoomBookingPage() {
   );
 }
 
-export default RoomBookingPage;
+export default BookingConfirmation;

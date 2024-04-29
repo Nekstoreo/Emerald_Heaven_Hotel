@@ -64,7 +64,7 @@
           "rooms": [
             {
               "id": "11D",
-              "available": true
+              "available": false
             },
             {
               "id": "12D",
@@ -111,11 +111,11 @@
           "rooms": [
             {
               "id": "21F",
-              "available": true
+              "available": false
             },
             {
               "id": "22F",
-              "available": true
+              "available": false
             },
             {
               "id": "23F",
