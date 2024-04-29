@@ -4,9 +4,10 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
-    "frontend" : "cd frontend && npm run start",
-    "backend" : "cd backend && npm run dev",
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+    "frontend" : "cd frontend && pnpm run start",
+    "backend" : "cd backend && pnpm run dev",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "preinstall": "npx only-allow pnpm"
   },
   "keywords": [],
   "author": "",
