@@ -4,28 +4,28 @@ function Footer() {
   return (
     <div>
       {/*Footer Section*/}
-      <div class="footer-dark" style={{ fontFamily: "Inter" }}>
+      <div className="footer-dark" style={{ fontFamily: "Inter" }}>
         <footer>
-          <div class="bscontainer">
-            <div class="bsrow">
-              <div class="bscol-md-2 item">
+          <div className="bscontainer">
+            <div className="bsrow">
+              <div className="bscol-md-2 item">
                 <h3>Pages</h3>
                 <ul>
                   <li>
-                    <a href="http://localhost:3000/">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
-                    <a href="hotels">Hotels</a>
+                    <a href="/hotels">Hotels</a>
                   </li>
                   <li>
-                    <a href="login">Login</a>
+                    <a href="/login">Login</a>
                   </li>
                   <li>
-                    <a href="roombooking">Book Hotel</a>
+                    <a href="/roombooking">Book Hotel</a>
                   </li>
                 </ul>
               </div>
-              <div class="bscol-md-2 item">
+              <div className="bscol-md-2 item">
                 <h3>Know More</h3>
                 <ul>
                   <li>
@@ -33,7 +33,7 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              <div class="bscol-md-2 item">
+              <div className="bscol-md-2 item">
                 <h3>Other Details</h3>
                 <ul>
                   <li>
@@ -44,7 +44,7 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              <div class="bscol-md-6 item text">
+              <div className="bscol-md-6 item text">
                 <h3>Emerald Haven</h3>
                 <p>
                   Over the last 25 years, Emerald Haven organisation has been
@@ -52,46 +52,8 @@ function Footer() {
                   experience with more than 50 hotels and resorts worldwide.
                 </p>
               </div>
-              <div class="social_links">
-                <a href="https://www.instagram.com/">
-                  <span class="fa-stack fa-lg ig combo">
-                    <i class="fa fa-circle fa-stack-2x circle"></i>
-                    <i class="fa fa-instagram fa-stack-1x fa-inverse icon"></i>
-                  </span>
-                </a>
-                <a href="https://www.facebook.com/">
-                  <span class="fa-stack fa-lg fb combo">
-                    <i class="fa fa-circle fa-stack-2x circle"></i>
-                    <i class="fa fa-facebook fa-stack-1x fa-inverse icon"></i>
-                  </span>
-                </a>
-                <a href="https://www.youtube.com/">
-                  <span class="fa-stack fa-lg yt combo">
-                    <i class="fa fa-circle fa-stack-2x circle"></i>
-                    <i class="fa fa-youtube-play fa-stack-1x fa-inverse icon"></i>
-                  </span>
-                </a>
-                <a href="https://www.twitter.com/">
-                  <span class="fa-stack fa-lg tw combo">
-                    <i class="fa fa-circle fa-stack-2x circle"></i>
-                    <i class="fa fa-twitter fa-stack-1x fa-inverse icon"></i>
-                  </span>
-                </a>
-                <a href="https://codepen.io">
-                  <span class="fa-stack fa-lg gt combo">
-                    <i class="fa fa-circle fa-stack-2x circle"></i>
-                    <i class="fa fa-codepen fa-stack-1x fa-inverse icon"></i>
-                  </span>
-                </a>
-                <a href="https://www.linkedin.com/">
-                  <span class="fa-stack fa-lg tw combo">
-                    <i class="fa fa-circle fa-stack-2x circle"></i>
-                    <i class="fa fa-linkedin fa-stack-1x fa-inverse icon"></i>
-                  </span>
-                </a>
-              </div>
             </div>
-            <p class="copyright">Emerald Haven © 2021</p>
+            <p className="copyright">Emerald Haven © 2021</p>
           </div>
         </footer>
       </div>

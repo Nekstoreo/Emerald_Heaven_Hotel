@@ -1,9 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
-import Contact from "../models/contactModel.js";
 const router = express.Router();
 
-router.post("/contactus", async (req, res) => {
+const contactSchema = new mongoose.Schema({
+  fullName: String,
+  email: String,
+  message: String
+});
+
+const Contact = mongoose.model("Contact", contactSchema);
+
+router.post("/contact-us", async (req, res) => {
   const { fullName, email, message } = req.body;
   if (!fullName || !email || !message) {
     return res
@@ -31,18 +38,6 @@ router.post("/contactus", async (req, res) => {
         message:
           "Hubo un error al guardar el formulario de contacto. Disculpe las molestias.",
       });
-  }
-});
-
-router.get("/getconctactus", async (_req, res) => {
-  try {
-    const contacts = await Contact.find(
-      {},
-      { _id: 0, fullName: 1, email: 1, message: 1 }
-    );
-    res.json(contacts);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
   }
 });
 
