@@ -1,76 +1,71 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
-import BookingConfirmation from "./pages/BookingConfirmation";
-import BookingCancelled from "./pages/BookingCancelled";
-import BookingSuccessful from "./pages/BookingSuccessful";
-import Bookings from "./pages/Bookings";
+import ReservationConfirmation from "./pages/ReservationConfirmation";
+import ReservationSuccessful from "./pages/ReservationSuccessful";
+import Reservations from "./pages/Reservations";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Hotels from "./pages/Hotels";
 import Team from "./pages/Team";
 import MapView from "./components/Map";
-import CheckAvailability from "./pages/CheckAvailability";
+import HotelInfoAvailability from "./pages/HotelInfoAvailability";
 import "./App.css";
 
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [email, setEmail] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
+    const token = localStorage.getItem("jwt-token");
+    useEffect(() => {
+        if (token) {
+            verifyToken().then(r => r);
+        } else console.log("No token found");
+    }, [loggedIn]);
 
-  useEffect(() => {
-    // Fetch the user email and token from local storage
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    // If the token/email does not exist, mark the user as logged out
-    if (!user || !user.token) {
-      setLoggedIn(false);
-      return;
+    async function verifyToken() {
+        try {
+            const response = await fetch("http://localhost:5000/verify", {
+                method: "POST", headers: {
+                    "Content-Type": "application/json", "jwt-token": token,
+                },
+            });
+            const data = await response.json();
+            if (data.message === "success") {
+                console.log("Token verified");
+                setLoggedIn(true);
+            }
+        } catch (error) {
+            console.error("Error verifying token:", error);
+        }
     }
 
-    // If the token exists, verify it with the auth server to see if it is valid
-    fetch("http://localhost:5000/verify", {
-      method: "POST",
-      headers: {
-        "jwt-token": user.token,
-      },
-    })
-      .then((r) => r.json())
-      .then((r) => {
-        setLoggedIn("success" === r.message);
-        setEmail(user.email || "");
-      });
-  }, []);
 
-  return (
-    <div className="App">
-      <Router>
-        <NavBar email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/login"
-            element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
-          />
-          <Route
-            path="/register"
-            element={<Register setLoggedIn={setLoggedIn} setEmail={setEmail} />}
-          />
-          <Route path="/hotels" element={<Hotels />} loggedIn={loggedIn} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/map" element={<MapView />} />
-          <Route path="/bookings" element={<Bookings email={email} />} />
-          <Route path="/bookingconfirmation" element={<BookingConfirmation />} />
-          <Route path="/bookingcancelled" element={<BookingCancelled />} />
-          <Route path="/bookingsuccessful" element={<BookingSuccessful />} />
-          <Route path="/check-availability" element={<CheckAvailability />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
-  );
+    return (<div className="App">
+        <Router>
+            <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route
+                    path="/login"
+                    element={<Login setLoggedIn={setLoggedIn}/>}
+                />
+                <Route
+                    path="/register"
+                    element={<Register setLoggedIn={setLoggedIn}/>}
+                />
+                <Route path="/hotels" element={<Hotels/>} loggedIn={loggedIn}/>
+                <Route path="/team" element={<Team/>}/>
+                <Route path="/map" element={<MapView/>}/>
+                <Route path="/bookings" element={<Reservations/>}/>
+                <Route path="/reservationconfirmation" element={<ReservationConfirmation/>}/>
+                <Route path="/reservationssuccess" element={<ReservationSuccessful/>}/>
+                <Route path="/check-availability" element={<HotelInfoAvailability/>}/>
+            </Routes>
+            <Footer/>
+        </Router>
+    </div>);
 }
 
 export default App;

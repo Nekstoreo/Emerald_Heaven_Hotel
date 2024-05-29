@@ -1,58 +1,34 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import cardStyles from "./RoomCard.module.css";
+import React from "react";
+import { Button } from "react-bootstrap";
 
-const RoomCard = ({ type, price, maxguests, availablecount, onReserve }) => {
-  const [selectedRooms, setSelectedRooms] = useState(1);
-  
-  const handleIncrement = () => {
-    if (selectedRooms < availablecount) {
-      setSelectedRooms(selectedRooms + 1);
-    }
-  };
+export default function RoomCard({ type, price, maxguests, availableRoomIds, selectedRoomsCount, reserveRoomId, removeRoomId }) {
+    const handleAdd = () => {
+        if (selectedRoomsCount < availableRoomIds.length) {
+            reserveRoomId({ type, price, maxguests, availableRoomIds });
+        }
+    };
 
-  const handleDecrement = () => {
-    if (selectedRooms > 0) {
-      setSelectedRooms(selectedRooms - 1);
-    }
-  };
+    const handleRemove = () => {
+        if (selectedRoomsCount > 0) {
+            removeRoomId({ type, price, maxguests, availableRoomIds });
+        }
+    };
 
-  const handleReserve = () => {
-    const roomprice = price.replace("$", "").replace(",", "");
-    const totalPrice = selectedRooms * parseFloat(roomprice);
-    onReserve({ type, price }, maxguests, selectedRooms, totalPrice);
-  };
-  
-
-  return (
-    <div className={cardStyles.roomCard}>
-      <h3 className={cardStyles.roomType}>{type}</h3>
-      <p className={cardStyles.roomField}>Precio: ${price}</p>
-      <p className={cardStyles.roomField}>Máximo de huéspedes: {maxguests}</p>
-      <p className={cardStyles.roomField}>
-        Habitaciones disponibles: {availablecount}
-      </p>
-      <div className={cardStyles.roomCounterContainer}>
-        <Button onClick={handleDecrement} disabled={selectedRooms === 0}>
-          -
-        </Button>
-        <span>{selectedRooms}</span>
-        <Button
-          onClick={handleIncrement}
-          disabled={selectedRooms === availablecount}
-        >
-          +
-        </Button>
-      </div>
-      <Button
-        className={cardStyles.reserveButton}
-        onClick={handleReserve}
-        disabled={selectedRooms === 0}
-      >
-        Reservar
-      </Button>
-    </div>
-  );
-};
-
-export default RoomCard;
+    return (
+        <div className="flex flex-col items-center justify-center border border-gray-300 rounded-lg p-5 shadow-md mr-4">
+            <h3 className="text-xl font-bold mb-4">{type}</h3>
+            <p className="mb-2">Price: ${price}</p>
+            <p className="mb-2">Max Guests: {maxguests}</p>
+            <p className="mb-2">Available Rooms: {availableRoomIds.length}</p>
+            <div className="flex items-center gap-2">
+                <Button onClick={handleRemove} disabled={selectedRoomsCount === 0}>
+                    Remove
+                </Button>
+                <span>{selectedRoomsCount}</span>
+                <Button onClick={handleAdd} disabled={selectedRoomsCount === availableRoomIds.length}>
+                    Add
+                </Button>
+            </div>
+        </div>
+    );
+}

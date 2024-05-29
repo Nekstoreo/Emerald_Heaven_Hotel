@@ -8,5 +8,12 @@
       <jdbc-url>mongodb://localhost:27017/admin</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="nestorg456k@atlas" uuid="ade17c1c-a027-4069-ba7b-d8c7de9f98ec">
+      <driver-ref>mongo</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+      <jdbc-url>mongodb+srv://nekstoreocluster.6nsrbbs.mongodb.net/</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -18,25 +18,19 @@ const Hotels = () => {
         setErrorFetching(true);
       }
     };
-
-    fetchHotels();
+    fetchHotels().then(r => r);
   }, []);
 
-  const handleCheckAvailability = (hotelName) => {
-    navigate("/check-availability", { state: { hotelName } });
+  const handleCheckAvailability = (_id) => {
+    navigate("/check-availability", { state: { _id } });
   };
 
   return (
     <div>
-      {/* Banner Section */}
-      <section className="banner" style={{ height: "60vh" }}>
-        <div className="content">
-          <div className="title">Our Hotels</div>
+      <div className="p-5 items-center">
+        <div className="flex items-center justify-between pb-5">
+        <h2 className="text-4xl font-semibold text-gray-800">Hotels</h2>
         </div>
-      </section>
-
-      <div className="py-5 px-5 items-center">
-        {/* Hotels Section */}
         {hotels.map((hotel, index) => (
           <HotelCard
             key={index}
