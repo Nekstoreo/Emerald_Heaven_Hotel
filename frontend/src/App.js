@@ -3,9 +3,8 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ReservationConfirmation from "./pages/ReservationConfirmation";
-import BookingCancelled from "./pages/BookingCancelled";
 import ReservationSuccessful from "./pages/ReservationSuccessful";
-import Bookings from "./pages/Bookings";
+import Reservations from "./pages/Reservations";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -59,10 +58,9 @@ function App() {
                 <Route path="/hotels" element={<Hotels/>} loggedIn={loggedIn}/>
                 <Route path="/team" element={<Team/>}/>
                 <Route path="/map" element={<MapView/>}/>
-                <Route path="/bookings" element={<Bookings/>}/>
+                <Route path="/bookings" element={<Reservations/>}/>
                 <Route path="/reservationconfirmation" element={<ReservationConfirmation/>}/>
-                <Route path="/reservationcancelled" element={<BookingCancelled/>}/>
-                <Route path="/bookingsuccessful" element={<ReservationSuccessful/>}/>
+                <Route path="/reservationssuccess" element={<ReservationSuccessful/>}/>
                 <Route path="/check-availability" element={<HotelInfoAvailability/>}/>
             </Routes>
             <Footer/>

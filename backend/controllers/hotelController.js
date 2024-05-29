@@ -26,10 +26,11 @@ export const getHotelDetails = async (req, res) => {
         }
 
         const modifiedRoomtypes = hotel.roomtypes.map((roomtype) => ({
+            _id: roomtype.id,
             type: roomtype.type,
             price: roomtype.price,
             maxguests: roomtype.maxguests,
-            availablecount: roomtype.rooms.filter((room) => room.available).length,
+            availableRoomIds: roomtype.rooms.filter((room) => room.available).map((room) => room.id),
         }));
 
         const hotelDetails = {

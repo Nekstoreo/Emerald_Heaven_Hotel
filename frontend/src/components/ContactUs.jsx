@@ -38,7 +38,7 @@ function ContactUs() {
 
     setIsLoading(true);
     const formData = { fullName, email, message };
-    fetch("http://localhost:5000/contactus", {
+    fetch("http://localhost:5000/contact-us", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
